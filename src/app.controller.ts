@@ -18,6 +18,8 @@ export class AppController {
   ) {
     const username = `${req.user.firstName} ${req.user.lastName}`;
 
-    return `${process.env.CLIENT_REDIRECT_URL}?username=${username}`;
+    return {
+      url: `${process.env.CLIENT_REDIRECT_URL}?username=${username}`,
+    };
   }
 }
