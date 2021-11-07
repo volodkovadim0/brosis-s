@@ -10,17 +10,14 @@ export class AppController {
 
   @Get('redirect')
   @UseGuards(AuthGuard('google'))
-  @Redirect(process.env.CLIENT_REDIRECT_URL)
+  @Redirect()
   googleAuthRedirect(
     @Req() req,
     @Session() session: any,
     @Res({ passthrough: true }) res: any,
   ) {
-    if (req.user) {
-      res.cookie(
-        'username',
-        `${req.user.firstName} ${req.user.lastName}`,
-      );
-    }
+    const username = `${req.user.firstName} ${req.user.lastName}`;
+
+    return `${process.env.CLIENT_REDIRECT_URL}?username=${username}`;
   }
 }
