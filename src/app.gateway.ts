@@ -20,7 +20,7 @@ interface BrosisMessage {
   action: string;
 }
 
-@WebSocketGateway(3333, { cors: { origin: '*' } })
+@WebSocketGateway({ cors: { origin: '*' } })
 export class AppGateway implements OnGatewayConnection {
   static broCounter = 0;
   static sisCounter = 0;
