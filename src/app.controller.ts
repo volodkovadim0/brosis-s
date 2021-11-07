@@ -10,7 +10,7 @@ export class AppController {
 
   @Get('redirect')
   @UseGuards(AuthGuard('google'))
-  @Redirect(process.env.REDIRECT_URL)
+  @Redirect(process.env.CLIENT_REDIRECT_URL)
   googleAuthRedirect(
     @Req() req,
     @Session() session: any,
